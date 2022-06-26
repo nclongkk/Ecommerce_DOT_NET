@@ -28,7 +28,10 @@
                         <button type="submit" class="upvote-button btn btn-primary"><i
                             class="fa-solid fa-circle-arrow-up"></i></button>
                     </form>
-                    <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-bookmark"></i></button>
+                    <form asp-controller="Bookmark" asp-action="Add" method="post" asp-route-postId="@item.Id">
+                        <button type="submit" class="upvote-button btn btn-secondary"><i
+                            class="fa-solid fa-bookmark"></i></button>
+                    </form>
                 </div>
             </div>
         }

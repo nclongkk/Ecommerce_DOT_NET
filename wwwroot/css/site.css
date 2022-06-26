@@ -88,3 +88,12 @@ body {
 .upvote-button {
   cursor: pointer;
 }
+
+.delete-btn {
+  position: relative;
+  top: -14px;
+  right: -251px;
+  border: 0;
+  background: transparent;
+  color: #bc6d6d;
+}

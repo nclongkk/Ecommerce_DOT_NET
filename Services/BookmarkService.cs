@@ -30,6 +30,7 @@ namespace daily_blog.Services
         {
             var bookmark = _dbSet.Find(id);
             _dbSet.Remove(bookmark);
+            _context.SaveChanges();
         }
 
 

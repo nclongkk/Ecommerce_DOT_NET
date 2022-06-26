@@ -50,12 +50,28 @@
     </header>
     <div class="sidebar">
         <a href="/post" class="active"><i class="fa-solid fa-house"></i>My feed</a>
-        <a href="#"><i class="fa-solid fa-circle-arrow-up"></i>Most Upvoted</a>
-        <a href="#"><i class="fa-solid fa-comment-dots"></i>Best discussions</a>
-        <a href="#" id="search"><i class="fa-solid fa-magnifying-glass"></i>Search</a>
+        <a href="/post/MostUpvoted"><i class="fa-solid fa-circle-arrow-up"></i>Most Upvoted</a>
+        <a href="/bookmark"><i class="fa-solid fa-bookmark"></i>Bookmarks</a>
+        <a href="/create"><i class="fa-solid fa-plus"></i>Create</a>
     </div>
 
     <main role="main" class="pb-3" id="main-content">
+        @if (@AuthorId != null)
+        {
+            <form asp-action="Keyword" asp-controller="Post" method="get">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for..." name="keyword" id="keyword">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        }
+
         @RenderBody()
     </main>
 
@@ -79,7 +95,7 @@
                 var searchInput = $('#search-input').val();
                 window.location.href = '/search?search=' + searchInput;
             });
-        
+
         });
     </script>
     @await RenderSectionAsync("Scripts", required: false)

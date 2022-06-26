@@ -1,7 +1,5 @@
-
-
 @{
-       var bookmarks = (BookmarkModel[])ViewData["bookmarks"];
+    var bookmarks = (BookmarkModel[])ViewData["bookmarks"];
 
     var title = ViewData["title"];
 }
@@ -15,6 +13,9 @@
         @foreach (var item in @bookmarks)
         {
             <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+                <form asp-controller="Bookmark" asp-action="Delete" method="post" asp-route-id="@item.Id">
+                    <button type="submit" class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </form>
                 <div style="height:3rem;">
                     <h5 onclick="goToBlog('@item.Post.Url')" style="cursor:pointer;">@item.Post.Title</h5>
                 </div>
@@ -22,11 +23,15 @@
                     <img class="img-fluid" src="@item.Post.Image" />
                 </div>
                 <div class="buttons-container">
-                    <form asp-controller="Post" asp-action="MostUpvoted" method="post" asp-route-id="@item.Id">
+                    <form asp-controller="Post" asp-action="MostUpvoted" method="post" asp-route-id="@item.Post.Id">
+                        <span>@item.Post.Upvote</span>
                         <button type="submit" class="upvote-button btn btn-primary"><i
                             class="fa-solid fa-circle-arrow-up"></i></button>
                     </form>
-                    <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+                    <form asp-controller="Bookmark" asp-action="Add" method="post" asp-route-postId="@item.Post.Id">
+                        <button type="submit" class="upvote-button btn btn-secondary"><i
+                            class="fa-solid fa-bookmark"></i></button>
+                    </form>
                 </div>
             </div>
         }

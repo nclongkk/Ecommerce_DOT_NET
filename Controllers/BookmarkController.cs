@@ -46,9 +46,10 @@ public class BookmarkController : Controller
         return RedirectToAction("Index");
     }
 
-    [HttpDelete("bookmark/Delete/{id?}")]
+    [HttpPost("bookmark/Delete/{id?}")]
     public IActionResult Delete(string id)
     {
+        Console.WriteLine(id);
         string userId = HttpContext.Session.GetString("user_id");
         if (userId == null)
         {
