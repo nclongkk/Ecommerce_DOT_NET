@@ -56,6 +56,26 @@ public class AuthController : Controller
         }
     }
 
+    [HttpGet("auth/Register")]
+    public IActionResult Register()
+    {
+        return View();
+    }
+
+    [HttpPost("auth/Register")]
+    public IActionResult Register(string Email, string Username, string Password)
+    {
+        UserModel userModel = new UserModel();
+        userModel.Email = Email;
+        userModel.Username = Username;
+        userModel.Password = Password;
+        userModel.CreatedAt = DateTime.Now;
+        Console.WriteLine(userModel.CreatedAt);
+        Console.WriteLine(userModel.Username);
+        userService.add(userModel);
+        return RedirectToAction("Login");
+    }
+
     public IActionResult Privacy()
     {
         return View();

@@ -34,6 +34,20 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// app.Use((context, next) =>
+// {
+//     var userId = context.Session.GetString("user_id");
+//     if (userId == null)
+//     {
+//         //call home index controller
+//         context.Response.Redirect("/");
+
+//     }
+//     Console.WriteLine("user_id: " + userId);
+//     return next.Invoke();
+// });
+
 app.MapControllerRoute(
     name: "auth",
     pattern: "auth/{action=Login}",
