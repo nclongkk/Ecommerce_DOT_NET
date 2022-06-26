@@ -1,27 +1,28 @@
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+using Ecommerce_DOT_NET.Services;
+using Ecommerce_DOT_NET.Models;
+public class Program
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    // private UserService userService;
+    // BaseService()
+    // {
+    //     this.userService = new UserService();
+    // }
+    static void Main(string[] args)
+    {
+        UserService userService = new UserService();
+        UserModel user = new UserModel() { Username = "admin", Password = "admin", Email = "nclongkk@gmail.com", Role = RoleEnum.Admin };
+        userService.add(user);
+    }
+
+    //     public void InsertData()
+    //     {
+    //         UserModel user = new UserModel
+    //         {
+    //             Username = "admin",
+    //             Password = "admin",
+    //             Email = "nclongkk@gmail.com",
+    //             Role = RoleEnum.Admin
+    //         };
+    //         userService.add(user);
+    //     }
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
