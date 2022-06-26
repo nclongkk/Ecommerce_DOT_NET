@@ -25,6 +25,7 @@ namespace daily_blog.Services
         {
             var post = _dbSet.Find(id);
             _dbSet.Remove(post);
+            _context.SaveChanges();
         }
 
         public PostModel? getById(int id)
@@ -49,6 +50,7 @@ namespace daily_blog.Services
         public void update(PostModel post)
         {
             _dbSet.Update(post);
+            _context.SaveChanges();
         }
     }
 }

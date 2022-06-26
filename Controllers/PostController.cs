@@ -21,9 +21,6 @@ public class PostController : Controller
     [HttpGet("post/{id?}")]
     public IActionResult Index(string id)
     {
-
-        // PostModel[] posts = postService.getAll();
-        // ViewData["posts"] = posts;
         if (id == null)
         {
             PostModel[] posts = postService.getAll();
@@ -38,13 +35,12 @@ public class PostController : Controller
         }
         ViewData["title"] = "post";
         return View();
-
-
     }
 
     [HttpGet("post/MostUpvoted")]
     public IActionResult MostUpvoted()
     {
+        Console.WriteLine(1);
         PostModel[] posts = postService.getMostUpvoted();
         ViewData["posts"] = posts;
         ViewData["title"] = "post";
@@ -54,18 +50,11 @@ public class PostController : Controller
     [HttpPost("post/MostUpvoted/{id?}")]
     public IActionResult MostUpvoted(string id)
     {
+        Console.WriteLine(id);
         PostModel post = postService.getById(int.Parse(id));
         post.Upvote += 1;
         postService.update(post);
-        return View();
-    }
-
-
-
-
-    public IActionResult Privacy()
-    {
-        return View();
+        return View("Index", "Post");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

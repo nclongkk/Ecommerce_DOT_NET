@@ -2,7 +2,6 @@
     var posts = (PostModel[])ViewData["posts"];
 
     var post = (PostModel)ViewData["post"];
-    Console.WriteLine(post?.ToString());
     var title = ViewData["title"];
 }
 <script type="text/javascript">
@@ -22,8 +21,10 @@
                     <img class="img-fluid" src="@item.Image" />
                 </div>
                 <div class="buttons-container">
-                    <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
-                    <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>
+                    <form asp-controller="Post" asp-action="MostUpvoted" method="post" asp-route-id="@item.Id">
+                        <button type="submit" class="upvote-button btn btn-primary"><i
+                            class="fa-solid fa-circle-arrow-up"></i></button>
+                    </form>
                     <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
                 </div>
             </div>
