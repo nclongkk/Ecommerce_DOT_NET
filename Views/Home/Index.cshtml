@@ -6,15 +6,31 @@
         Console.WriteLine(post.Title);
     }
 }
+<link href="@Url.Content("Index.cshtml.css")" rel="stylesheet" type="text/css" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-
-
-    <h1>@user.Username</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-    <script>
-        @* console.log(@posts[0].Title); *@
-    </script>
+<div class="row grid-container">
+   <div class="row g-5 grid-row">
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+  </div>
+  <div class="row g-5 grid-row">
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+  </div>
+  <div class="row g-5 grid-row">
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+  </div>
+  <div class="row g-5 grid-row">
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+    <div class="col col-md-3 grid-item">Column</div>
+  </div>
 </div>

@@ -15,4 +15,31 @@ html {
 
 body {
   margin-bottom: 60px;
+  overflow-x: hidden;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+#main-content {
+  padding-left: 250px;
+  /* padding-top: 50px; */
+  display: flex;
+  justify-content: center;
+}
+.grid-row {
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
+}
+.grid-container {
+  position: relative;
+  /* display: flex; */
+  text-align: center;
+}
+
+.grid-item {
+  height: 300px;
+  background-color: aqua;
+  width: 370px;
 }
