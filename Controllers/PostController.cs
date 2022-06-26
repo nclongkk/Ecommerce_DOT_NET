@@ -41,7 +41,7 @@ public class PostController : Controller
     public IActionResult MostUpvoted()
     {
         PostModel[] posts = postService.getMostUpvoted();
-        ViewData["upvotes"] = posts;
+        ViewData["posts"] = posts;
         ViewData["title"] = "post";
         return View();
     }
