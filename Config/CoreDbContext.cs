@@ -11,7 +11,7 @@ public class CoreDbContext : DbContext
 
     public DbSet<UserModel>? UserModel { get; set; }
     public DbSet<PostModel>? PostModel { get; set; }
-    public DbSet<BookmarkModel>? BookmarkModels { get; set; }
+    public DbSet<BookmarkModel>? BookmarkModel { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

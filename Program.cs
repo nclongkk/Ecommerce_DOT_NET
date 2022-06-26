@@ -62,13 +62,25 @@ app.MapControllerRoute(
 //     defaults: new { controller = "User", action = "Index" });
 app.MapControllerRoute(
     name: "post",
-    pattern: "post/MostUpvoted",
+    pattern: "post/{action=MostUpvoted}",
     defaults: new { controller = "Post", action = "MostUpvoted" });
 
 app.MapControllerRoute(
     name: "post",
     pattern: "post/{id?}",
     defaults: new { controller = "Post", action = "Index" });
+app.MapControllerRoute(
+    name: "bookmark",
+    pattern: "bookmark/{id?}",
+    defaults: new { controller = "Bookmark", action = "Index" });
+app.MapControllerRoute(
+    name: "bookmark",
+    pattern: "bookmark/{action=Add}",
+    defaults: new { controller = "Bookmark", action = "Add" });
+app.MapControllerRoute(
+    name: "bookmark",
+    pattern: "bookmark/{action=Delete}/{id?}",
+    defaults: new { controller = "Bookmark", action = "Delete" });
 
 app.MapControllerRoute(
     name: "create",
