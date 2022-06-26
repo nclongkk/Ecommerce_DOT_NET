@@ -40,9 +40,8 @@ public class PostController : Controller
     [HttpGet("post/MostUpvoted")]
     public IActionResult MostUpvoted()
     {
-        Console.WriteLine(1);
         PostModel[] posts = postService.getMostUpvoted();
-        ViewData["posts"] = posts;
+        ViewData["upvotes"] = posts;
         ViewData["title"] = "post";
         return View();
     }
@@ -61,11 +60,10 @@ public class PostController : Controller
     [HttpPost("post/MostUpvoted/{id?}")]
     public IActionResult MostUpvoted(string id)
     {
-        Console.WriteLine(id);
         PostModel post = postService.getById(int.Parse(id));
         post.Upvote += 1;
         postService.update(post);
-        return View("Index", "Post");
+        return RedirectToAction("Index", "Post");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
