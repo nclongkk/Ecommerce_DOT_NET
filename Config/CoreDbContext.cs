@@ -10,6 +10,8 @@ public class CoreDbContext : DbContext
 
 
     public DbSet<UserModel>? UserModel { get; set; }
+    public DbSet<PostModel>? PostModel { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -28,10 +30,10 @@ public class CoreDbContext : DbContext
         modelBuilder.Entity<PostModel>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.Title).IsRequired();
-            entity.Property(e => e.Image).IsRequired();
+            entity.Property(e => e.Title);
+            entity.Property(e => e.Image);
             entity.Property(e => e.AuthorId).IsRequired();
-            entity.Property(e => e.CreatedAt).IsRequired();
+            entity.Property(e => e.CreatedAt);
             entity.HasOne(e => e.Author).WithMany(e => e.Posts).HasForeignKey(e => e.AuthorId);
         });
     }

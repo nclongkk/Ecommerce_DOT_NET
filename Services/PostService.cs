@@ -31,10 +31,17 @@ namespace daily_blog.Services
             _dbSet.Remove(post);
         }
 
-        public PostModel getById(int id)
+        public PostModel? getById(int id)
         {
-            PostModel post = _dbSet.Find(id);
+            PostModel post = _dbSet.Include(p => p.Author).FirstOrDefault(p => p.Id == id);
+            // PostModel post = _dbSet.Find(id);
             return post;
+        }
+
+        public PostModel[] getAll()
+        {
+            PostModel[] posts = _dbSet.ToArray();
+            return posts;
         }
     }
 }
