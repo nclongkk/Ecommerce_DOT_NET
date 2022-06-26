@@ -33,8 +33,8 @@ namespace daily_blog.Services
 
         public PostModel? getById(int id)
         {
-            // PostModel post = _dbSet.Include(p => p.Author).FirstOrDefault(p => p.Id == id);
-            PostModel post = _dbSet?.Find(id);
+            PostModel post = _dbSet.Include(p => p.Author).FirstOrDefault(p => p.Id == id);
+            // PostModel post = _dbSet.Find(id);
             return post;
         }
 

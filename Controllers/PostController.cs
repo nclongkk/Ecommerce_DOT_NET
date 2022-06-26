@@ -9,9 +9,11 @@ public class PostController : Controller
 {
     private readonly ILogger<PostController> _logger;
     private PostService postService;
+    private UserService userService;
 
     public PostController(ILogger<PostController> logger)
     {
+        userService = new UserService();
         postService = new PostService();
         _logger = logger;
     }
@@ -30,8 +32,8 @@ public class PostController : Controller
         else
         {
             Console.WriteLine(1);
-            PostModel? post = postService?.getById(int.Parse(id));
-            // Console.WriteLine(post?.ToString());
+            PostModel post = postService.getById(int.Parse(id));
+            Console.WriteLine(post?.ToString());
             ViewData["post"] = post;
         }
         ViewData["title"] = "post";

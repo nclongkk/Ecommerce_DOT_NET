@@ -11,6 +11,7 @@ namespace daily_blog.Models
         [StringLength(100)]
         public string? Image { get; set; }
 
+        [Required]
         public int? AuthorId { get; set; }
 
         public virtual UserModel? Author { get; set; }
