@@ -18,13 +18,14 @@ public class CreateController : Controller
     {
         return View();
     }
-    [HttpPost]
+    [HttpPost("create")]
     public IActionResult Post(PostModel newPost)
     {
         string title = newPost?.Title;
         string image = newPost?.Image;
         string url = newPost?.Url;
-
-        return View();
+        int AuthorId = int.Parse(HttpContext?.Session?.GetString("user_id"));
+        this.postService.add(newPost);
+        return RedirectToAction("Index", "Home");
     }
 }

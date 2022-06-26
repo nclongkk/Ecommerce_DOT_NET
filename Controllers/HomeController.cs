@@ -21,7 +21,11 @@ public class HomeController : Controller
     [HttpGet("{id?}")]
     public IActionResult Index(string id)
     {
-
+        string userId = HttpContext.Session.GetString("user_id");
+        if (userId != null)
+        {
+            return RedirectToAction("Index", "Post");
+        }
         ViewData["title"] = "home page";
         return View();
 

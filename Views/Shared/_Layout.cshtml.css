@@ -81,16 +81,16 @@ button.accept-policy {
   color: white;
 }
 
-/* div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
-} */
-
 @media screen and (max-width: 967px) {
   .sidebar {
     width: 100%;
     height: auto;
     position: relative;
   }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #0e1217;
 }
