@@ -1,36 +1,92 @@
 ﻿@{
-    UserModel user = (UserModel)ViewData?["user"];
-    @* Console.WriteLine(user?.Posts.Title); *@
-    foreach(PostModel post in user?.Posts)
+  @* UserModel user = (UserModel)ViewData?["user"];
+    Console.WriteLine(user?.Posts.Title);
+    foreach (PostModel post in user?.Posts)
     {
-        Console.WriteLine(post.Title);
-    }
+    Console.WriteLine(post.Title);
+    } *@
 }
-<link href="@Url.Content("Index.cshtml.css")" rel="stylesheet" type="text/css" />
 
-<div class="row grid-container">
-   <div class="row g-5 grid-row">
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
+<div class="container">
+  <div class="row grid-container pt-5">
+    <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+      <h5>Daily makes it extremely easy to stay updated with the latest dev news.</h5>
+      <img class="img-fluid"
+        src="https://images.unsplash.com/photo-1542995470-870e12e7e14f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+      <div class="buttons-container">
+        <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+      <h5>Daily makes it extremely easy to stay updated with the latest dev news.</h5>
+      <img class="img-fluid"
+        src="https://images.unsplash.com/photo-1542995470-870e12e7e14f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+      <div class="buttons-container">
+        <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+      <h5>Daily makes it extremely easy to stay updated with the latest dev news.</h5>
+      <img class="img-fluid"
+        src="https://images.unsplash.com/photo-1542995470-870e12e7e14f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+      <div class="buttons-container">
+        <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+      <h5>Daily makes it extremely easy to stay updated with the latest dev news.</h5>
+      <img class="img-fluid"
+        src="https://images.unsplash.com/photo-1542995470-870e12e7e14f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+      <div class="buttons-container">
+        <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+      <h5>Daily makes it extremely easy to stay updated with the latest dev news.</h5>
+      <img class="img-fluid"
+        src="https://images.unsplash.com/photo-1542995470-870e12e7e14f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+      <div class="buttons-container">
+        <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+      <h5>Daily makes it extremely easy to stay updated with the latest dev news.</h5>
+      <img class="img-fluid"
+        src="https://images.unsplash.com/photo-1542995470-870e12e7e14f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+      <div class="buttons-container">
+        <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+      <h5>Daily makes it extremely easy to stay updated with the latest dev news.</h5>
+      <img class="img-fluid"
+        src="https://images.unsplash.com/photo-1542995470-870e12e7e14f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+      <div class="buttons-container">
+        <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+      <h5>Daily makes it extremely easy to stay updated with the latest dev news.</h5>
+      <img class="img-fluid"
+        src="https://images.unsplash.com/photo-1542995470-870e12e7e14f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+      <div class="buttons-container">
+        <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>
+        <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+      </div>
+    </div>
   </div>
-  <div class="row g-5 grid-row">
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-  </div>
-  <div class="row g-5 grid-row">
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-  </div>
-  <div class="row g-5 grid-row">
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-    <div class="col col-md-3 grid-item">Column</div>
-  </div>
-</div>
