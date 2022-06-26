@@ -62,6 +62,11 @@ app.MapControllerRoute(
 //     defaults: new { controller = "User", action = "Index" });
 app.MapControllerRoute(
     name: "post",
+    pattern: "post/MostUpvoted",
+    defaults: new { controller = "Post", action = "MostUpvoted" });
+
+app.MapControllerRoute(
+    name: "post",
     pattern: "post/{id?}",
     defaults: new { controller = "Post", action = "Index" });
 

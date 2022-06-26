@@ -21,6 +21,7 @@ namespace daily_blog.Services
 
         public void add(UserModel user)
         {
+            user.CreatedAt = DateTime.Now;
             _dbSet.Add(user);
         }
 
