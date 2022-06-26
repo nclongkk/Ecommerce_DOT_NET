@@ -12,9 +12,10 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
-    public IActionResult Index()
+    [HttpGet("{id}")]
+    public IActionResult Index(String id)
     {
+        ViewBag.id = id;
         return View();
     }
 
