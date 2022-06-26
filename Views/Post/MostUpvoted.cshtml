@@ -22,6 +22,7 @@
                 </div>
                 <div class="buttons-container">
                     <form asp-controller="Post" asp-action="MostUpvoted" method="post" asp-route-id="@item.Id">
+                        <span>@item.Upvote</span>
                         <button type="submit" class="upvote-button btn btn-primary"><i
                             class="fa-solid fa-circle-arrow-up"></i></button>
                     </form>
