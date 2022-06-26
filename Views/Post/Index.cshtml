@@ -1,6 +1,6 @@
 @{
     var posts = (PostModel[])ViewData["posts"];
-    Console.WriteLine(posts.Length);
+    Console.WriteLine(posts[0]?.Url);
 
     var post = (PostModel)ViewData["post"];
     Console.WriteLine(post?.ToString());

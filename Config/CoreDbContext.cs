@@ -32,6 +32,7 @@ public class CoreDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Title);
             entity.Property(e => e.Image);
+            entity.Property(e => e.Url);
             entity.Property(e => e.AuthorId).IsRequired();
             entity.Property(e => e.CreatedAt);
             entity.HasOne(e => e.Author).WithMany(e => e.Posts).HasForeignKey(e => e.AuthorId);

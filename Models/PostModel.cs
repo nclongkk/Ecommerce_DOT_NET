@@ -11,15 +11,14 @@ namespace daily_blog.Models
         [StringLength(100)]
         public string? Image { get; set; }
 
+        [StringLength(100)]
+        public string? Url { get; set; }
+
         [Required]
         public int? AuthorId { get; set; }
-
+        [Required]
         public virtual UserModel? Author { get; set; }
 
-        //override ToString()
-        public override string ToString()
-        {
-            return $"{Id} - {Title} - {Image} - {AuthorId} - {CreatedAt}";
-        }
+
     }
 }
