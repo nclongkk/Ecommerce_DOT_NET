@@ -1,10 +1,24 @@
 @{
     var posts = (PostModel[])ViewData["posts"];
-    Console.WriteLine(posts.Length);
 
     var post = (PostModel)ViewData["post"];
     Console.WriteLine(post?.ToString());
     var title = ViewData["title"];
 }
-<h1>@post?.Id</h1>
-<h1>post</h1>
+
+<div class="container">
+    <div class="row grid-container pt-5">
+        @foreach (var item in @posts)
+        {
+            <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+                <h5 style="min-height:10rem">@item.Title</h5>
+                <img class="img-fluid" src="@item.Image" />
+                <div class="buttons-container">
+                    <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+                    <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>
+                    <button class="upvote-button btn btn-secondary"><i class="fa-solid fa-circle-arrow-up"></i></button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
