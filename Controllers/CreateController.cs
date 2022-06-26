@@ -21,10 +21,8 @@ public class CreateController : Controller
     [HttpPost("create")]
     public IActionResult Post(PostModel newPost)
     {
-        string title = newPost?.Title;
-        string image = newPost?.Image;
-        string url = newPost?.Url;
-        int AuthorId = int.Parse(HttpContext?.Session?.GetString("user_id"));
+        int AuthorId = int.Parse(HttpContext.Session.GetString("user_id"));
+        newPost.AuthorId = AuthorId;
         this.postService.add(newPost);
         return RedirectToAction("Index", "Home");
     }

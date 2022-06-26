@@ -15,10 +15,12 @@
         @foreach (var item in @posts)
         {
             <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
-                <div style="min-height:10rem;">
+                <div style="height:3rem;">
                     <h5 onclick="goToBlog('@item.Url')" style="cursor:pointer;">@item.Title</h5>
                 </div>
-                <img class="img-fluid" src="@item.Image" />
+                <div style="width=265px; height=300px;">
+                    <img class="img-fluid" src="@item.Image" />
+                </div>
                 <div class="buttons-container">
                     <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
                     <button class="upvote-button btn btn-success"><i class="fa-solid fa-circle-arrow-up"></i></button>

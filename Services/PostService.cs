@@ -13,12 +13,6 @@ namespace daily_blog.Services
             _context = new CoreDbContext();
             _dbSet = _context.Set<PostModel>();
         }
-        //destructor
-        // ~PostService()
-        // {
-        //     _context.SaveChanges();
-        // }
-
         public void add(PostModel post)
         {
             _dbSet.Add(post);

@@ -46,7 +46,6 @@ public class AuthController : Controller
             {
                 HttpContext.Session.SetString("user_id", userModels[0].Id.ToString());
                 string userId = HttpContext.Session.GetString("user_id");
-                Console.WriteLine(userId);
                 return RedirectToAction("Index", "Post");
             }
             else
@@ -75,7 +74,12 @@ public class AuthController : Controller
         userService.add(userModel);
         return RedirectToAction("Login");
     }
-
+    [HttpGet]
+    public IActionResult Logout()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToAction("Login");
+    }
     public IActionResult Privacy()
     {
         return View();

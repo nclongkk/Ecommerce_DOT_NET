@@ -94,3 +94,9 @@ button.accept-policy {
   justify-content: space-between;
   background-color: #0e1217;
 }
+
+.header {
+  position: relative;
+  top: 0;
+  z-index: 1000;
+}
