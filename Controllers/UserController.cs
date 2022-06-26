@@ -4,6 +4,7 @@
 
 // public class UserController : Controller
 // {
+//     [HttpGet("/user/{id?}")]
 //     public IActionResult Index(string id)
 //     {
 //         ViewData["id"] = id;
