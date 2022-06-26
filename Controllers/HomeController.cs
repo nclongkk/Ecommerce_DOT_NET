@@ -21,16 +21,9 @@ public class HomeController : Controller
     [HttpGet("{id?}")]
     public IActionResult Index(string id)
     {
-        if (id == null)
-        {
-            return View();
-        }
-        else
-        {
-            UserModel user = userService.getById(int.Parse(id));
-            ViewData["user"] = user;
-            return View();
-        }
+
+        ViewData["title"] = "home page";
+        return View();
 
 
     }

@@ -1,0 +1,7 @@
+@{
+    @* var posts = (PostModel[])ViewData["posts"]; *@
+    var post = (PostModel)ViewData["post"];
+    Console.WriteLine(post?.ToString());
+    var title = ViewData["title"];
+}
+<h1>@post?.Title</h1>
