@@ -1,0 +1,4 @@
+@{
+    var bookmarks = (BookmarkModel[])ViewData["bookmarks"];
+    Console.WriteLine(bookmarks[0]?.Post.Title);
+}
