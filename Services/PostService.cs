@@ -15,6 +15,8 @@ namespace daily_blog.Services
         }
         public void add(PostModel post)
         {
+            post.CreatedAt = DateTime.Now;
+            post.Upvote = 0;
             _dbSet.Add(post);
             _context.SaveChanges();
         }
@@ -36,6 +38,17 @@ namespace daily_blog.Services
         {
             PostModel[] posts = _dbSet.ToArray();
             return posts;
+        }
+
+        public PostModel[] getMostUpvoted()
+        {
+            PostModel[] posts = _dbSet.OrderByDescending(p => p.Upvote).ToArray();
+            return posts;
+        }
+
+        public void update(PostModel post)
+        {
+            _dbSet.Update(post);
         }
     }
 }

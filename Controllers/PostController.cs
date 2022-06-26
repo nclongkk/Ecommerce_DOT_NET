@@ -42,6 +42,32 @@ public class PostController : Controller
 
     }
 
+    [HttpGet("post/MostUpvoted")]
+    public IActionResult MostUpvoted()
+    {
+        PostModel[] posts = postService.getMostUpvoted();
+        ViewData["posts"] = posts;
+        ViewData["title"] = "post";
+        return View();
+    }
+
+    [HttpPost("post/MostUpvoted/{id?}")]
+    public IActionResult MostUpvoted(string id)
+    {
+        PostModel post = postService.getById(int.Parse(id));
+        post.Upvote += 1;
+        postService.update(post);
+        return View();
+    }
+
+
+
+
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

@@ -14,6 +14,9 @@ namespace daily_blog.Models
         [StringLength(100)]
         public string? Url { get; set; }
 
+        public int? Upvote { get; set; }
+        public virtual ICollection<BookmarkModel>? Bookmarks { get; set; }
+
         [Required]
         public int? AuthorId { get; set; }
         [Required]
