@@ -39,11 +39,11 @@ app.MapControllerRoute(
     name: "post",
     pattern: "post/{id?}",
     defaults: new { controller = "Post", action = "Index" });
+
 app.MapControllerRoute(
     name: "create",
-    pattern: "create",
+    pattern: "create/{id?}",
     defaults: new { controller = "Create", action = "Index" }
 );
-// pattern: "{controller=User}/{action=Index}/{id?}");
 
 app.Run();

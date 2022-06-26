@@ -5,13 +5,19 @@
     Console.WriteLine(post?.ToString());
     var title = ViewData["title"];
 }
-
+<script type="text/javascript">
+    const goToBlog = (url) => {
+        window.open(url, "_blank")
+    }
+</script>
 <div class="container">
     <div class="row grid-container pt-5">
         @foreach (var item in @posts)
         {
             <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
-                <h5 style="min-height:10rem">@item.Title</h5>
+                <div style="min-height:10rem;">
+                    <h5 onclick="goToBlog('@item.Url')" style="cursor:pointer;">@item.Title</h5>
+                </div>
                 <img class="img-fluid" src="@item.Image" />
                 <div class="buttons-container">
                     <button class="upvote-button btn btn-primary"><i class="fa-solid fa-circle-arrow-up"></i></button>
