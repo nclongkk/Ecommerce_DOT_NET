@@ -10,6 +10,9 @@ public class CoreDbContext : DbContext
 
 
     public DbSet<UserModel>? UserModel { get; set; }
+    public DbSet<PostModel>? PostModel { get; set; }
+    public DbSet<BookmarkModel>? BookmarkModel { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -23,16 +26,30 @@ public class CoreDbContext : DbContext
             entity.Property(e => e.Role).IsRequired();
             entity.Property(e => e.CreatedAt).IsRequired();
             entity.HasMany(e => e.Posts).WithOne(e => e.Author).HasForeignKey(e => e.AuthorId);
+            entity.HasMany(e => e.Bookmarks).WithOne(e => e.User).HasForeignKey(e => e.UserId);
         });
 
         modelBuilder.Entity<PostModel>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.Title).IsRequired();
-            entity.Property(e => e.Image).IsRequired();
+            entity.Property(e => e.Title);
+            entity.Property(e => e.Image);
+            entity.Property(e => e.Url);
             entity.Property(e => e.AuthorId).IsRequired();
-            entity.Property(e => e.CreatedAt).IsRequired();
+            entity.Property(e => e.CreatedAt);
+            entity.Property(e => e.Upvote);
             entity.HasOne(e => e.Author).WithMany(e => e.Posts).HasForeignKey(e => e.AuthorId);
+            entity.HasMany(e => e.Bookmarks).WithOne(e => e.Post).HasForeignKey(e => e.PostId);
+        });
+
+        modelBuilder.Entity<BookmarkModel>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.UserId).IsRequired();
+            entity.Property(e => e.PostId).IsRequired();
+            entity.Property(e => e.CreatedAt);
+            entity.HasOne(e => e.User).WithMany(e => e.Bookmarks).HasForeignKey(e => e.UserId);
+            entity.HasOne(e => e.Post).WithMany(e => e.Bookmarks).HasForeignKey(e => e.PostId);
         });
     }
 }

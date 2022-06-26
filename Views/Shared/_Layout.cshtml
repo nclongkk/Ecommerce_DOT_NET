@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,43 +8,98 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/daily_blog.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+@using Microsoft.AspNetCore.Http;
+@{
+    string AuthorId = Context.Session.GetString("user_id");
+}
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header class="header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">daily_blog</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <a class="navbar-brand" style="color:#fff;">Daily Blog</a>
+                @if (@AuthorId == null)
+                {
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" style="color:#fff;" asp-area="" asp-controller="Auth"
+                            asp-action="Login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" style="color:#fff;" asp-area="" asp-controller="Auth"
+                            asp-action="Register">Register</a>
                         </li>
                     </ul>
-                </div>
+                }
+                else
+                {
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" style="color:#fff;" asp-area="" asp-controller="Auth"
+                            asp-action="Logout">Logout</a>
+                        </li>
+                    </ul>
+                }
+
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <div class="sidebar">
+        <a href="/post" class="active"><i class="fa-solid fa-house"></i>My feed</a>
+        <a href="/post/MostUpvoted"><i class="fa-solid fa-circle-arrow-up"></i>Most Upvoted</a>
+        <a href="/bookmark"><i class="fa-solid fa-bookmark"></i>Bookmarks</a>
+        <a href="/create"><i class="fa-solid fa-plus"></i>Create</a>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - daily_blog - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    <main role="main" class="pb-3" id="main-content">
+        @if (@AuthorId != null)
+        {
+            <form asp-action="Keyword" asp-controller="Post" method="get">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for..." name="keyword" id="keyword">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        }
+
+        @RenderBody()
+    </main>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $('.sidebar a').click(function (e) {
+            $('.sidebar a').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $('#search').click(function (e) {
+            //create a popup to fill search input
+            var searchPopup = document.createElement('div');
+            searchPopup.className = 'search-popup';
+            searchPopup.innerHTML = '<div class="search-popup-inner"><input type="text" placeholder="Search" id="search-input"/><button id="search-button">Search</button></div>';
+            document.body.appendChild(searchPopup);
+            //add event listener to search button
+            $('#search-button').click(function (e) {
+                var searchInput = $('#search-input').val();
+                window.location.href = '/search?search=' + searchInput;
+            });
+
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

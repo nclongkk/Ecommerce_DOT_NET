@@ -21,16 +21,13 @@ public class HomeController : Controller
     [HttpGet("{id?}")]
     public IActionResult Index(string id)
     {
-        if (id == null)
+        string userId = HttpContext.Session.GetString("user_id");
+        if (userId != null)
         {
-            return View();
+            return RedirectToAction("Index", "Post");
         }
-        else
-        {
-            UserModel user = userService.getById(int.Parse(id));
-            ViewData["user"] = user;
-            return View();
-        }
+        ViewData["title"] = "home page";
+        return View();
 
 
     }

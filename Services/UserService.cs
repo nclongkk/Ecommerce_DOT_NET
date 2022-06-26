@@ -21,6 +21,7 @@ namespace daily_blog.Services
 
         public void add(UserModel user)
         {
+            user.CreatedAt = DateTime.Now;
             _dbSet.Add(user);
         }
 
@@ -36,5 +37,17 @@ namespace daily_blog.Services
             UserModel user = _dbSet.Find(id);
             return user;
         }
+
+        public UserModel[] getUsersByEmail(string? email)
+        {
+            IQueryable<UserModel> query = _dbSet;
+            if (email != null)
+            {
+                query = query.Where(p => p.Email == email);
+            }
+            UserModel[] users = query.ToArray();
+            return users;
+        }
+
     }
 }

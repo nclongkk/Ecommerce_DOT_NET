@@ -1,0 +1,39 @@
+@{
+    var posts = (PostModel[])ViewData["posts"];
+
+    var post = (PostModel)ViewData["post"];
+    var upvotes = (PostModel[])ViewData["upvotes"];
+    var title = ViewData["title"];
+}
+<script type="text/javascript">
+    const goToBlog = (url) => {
+        window.open(url, "_blank")
+    }
+</script>
+
+<div class="container">
+    <div class="row grid-container pt-5">
+        @foreach (var item in @posts)
+        {
+            <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
+                <div style="height:3rem;">
+                    <h5 onclick="goToBlog('@item.Url')" style="cursor:pointer;">@item.Title</h5>
+                </div>
+                <div style="width=265px; height=300px;">
+                    <img class="img-fluid" src="@item.Image" />
+                </div>
+                <div class="buttons-container">
+                    <form asp-controller="Post" asp-action="MostUpvoted" method="post" asp-route-id="@item.Id">
+                        <span>@item.Upvote</span>
+                        <button type="submit" class="upvote-button btn btn-primary"><i
+                            class="fa-solid fa-circle-arrow-up"></i></button>
+                    </form>
+                    <form asp-controller="Bookmark" asp-action="Add" method="post" asp-route-postId="@item.Id">
+                        <button type="submit" class="upvote-button btn btn-secondary"><i
+                            class="fa-solid fa-bookmark"></i></button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -21,6 +21,7 @@ namespace daily_blog.Models
         public RoleEnum? Role { get; set; }
 
         public virtual ICollection<PostModel>? Posts { get; set; }
+        public virtual ICollection<BookmarkModel>? Bookmarks { get; set; }
 
         public string toString()
         {
