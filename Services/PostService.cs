@@ -52,5 +52,11 @@ namespace daily_blog.Services
             _dbSet.Update(post);
             _context.SaveChanges();
         }
+
+        public PostModel[] getAllPostWithKeyword(string keyword)
+        {
+            PostModel[] posts = _dbSet.Where(p => p.Title.Contains(keyword)).ToArray();
+            return posts;
+        }
     }
 }

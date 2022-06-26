@@ -1,8 +1,7 @@
-
-
 @{
-       var bookmarks = (BookmarkModel[])ViewData["bookmarks"];
+    var posts = (PostModel[])ViewData["posts"];
 
+    var post = (PostModel)ViewData["post"];
     var title = ViewData["title"];
 }
 <script type="text/javascript">
@@ -12,14 +11,14 @@
 </script>
 <div class="container">
     <div class="row grid-container pt-5">
-        @foreach (var item in @bookmarks)
+        @foreach (var item in @posts)
         {
             <div class="col-md-3 col-sm-6 col-xs-12 grid-item">
                 <div style="height:3rem;">
-                    <h5 onclick="goToBlog('@item.Post.Url')" style="cursor:pointer;">@item.Post.Title</h5>
+                    <h5 onclick="goToBlog('@item.Url')" style="cursor:pointer;">@item.Title</h5>
                 </div>
                 <div style="width=265px; height=300px;">
-                    <img class="img-fluid" src="@item.Post.Image" />
+                    <img class="img-fluid" src="@item.Image" />
                 </div>
                 <div class="buttons-container">
                     <form asp-controller="Post" asp-action="MostUpvoted" method="post" asp-route-id="@item.Id">

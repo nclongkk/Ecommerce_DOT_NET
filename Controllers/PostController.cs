@@ -47,6 +47,17 @@ public class PostController : Controller
         return View();
     }
 
+    [HttpGet("post/Keyword/{keyword}")]
+    public IActionResult Keyword(string keyword)
+    {
+        Console.WriteLine(1);
+        PostModel[] posts = postService.getAllPostWithKeyword(keyword);
+        ViewData["posts"] = posts;
+        ViewData["title"] = "post";
+        return View();
+    }
+
+
     [HttpPost("post/MostUpvoted/{id?}")]
     public IActionResult MostUpvoted(string id)
     {
