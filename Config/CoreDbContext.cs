@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Ecommerce_DOT_NET.Models;
+using daily_blog.Models;
 
 public class CoreDbContext : DbContext
 {
@@ -21,9 +21,18 @@ public class CoreDbContext : DbContext
             entity.Property(e => e.Password).IsRequired();
             entity.Property(e => e.Email).IsRequired();
             entity.Property(e => e.Role).IsRequired();
+            entity.Property(e => e.CreatedAt).IsRequired();
+            entity.HasMany(e => e.Posts).WithOne(e => e.Author).HasForeignKey(e => e.AuthorId);
         });
 
+        modelBuilder.Entity<PostModel>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Title).IsRequired();
+            entity.Property(e => e.Image).IsRequired();
+            entity.Property(e => e.AuthorId).IsRequired();
+            entity.Property(e => e.CreatedAt).IsRequired();
+            entity.HasOne(e => e.Author).WithMany(e => e.Posts).HasForeignKey(e => e.AuthorId);
+        });
     }
-
-
 }

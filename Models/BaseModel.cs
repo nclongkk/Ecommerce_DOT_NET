@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Ecommerce_DOT_NET.Models
+namespace daily_blog.Models
 {
     public class BaseModel
     {

@@ -1,8 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using daily_blog.Models;
-using Ecommerce_DOT_NET.Services;
-using Ecommerce_DOT_NET.Models;
+using daily_blog.Services;
 
 namespace daily_blog.Controllers;
 
@@ -10,19 +9,32 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private UserService userService;
+    private PostService postService;
 
     public HomeController(ILogger<HomeController> logger)
     {
         userService = new UserService();
+        postService = new PostService();
         _logger = logger;
     }
 
-    public IActionResult Index()
+    [HttpGet("{id?}")]
+    public IActionResult Index(string id)
     {
-        this.userService.add(new UserModel { Id = 1, Username = "test", Password = "test", Email = "nclongkk@gmail.com", Role = RoleEnum.Admin, CreatedAt = DateTime.Now });
+        if (id == null)
+        {
+            return View();
+        }
+        else
+        {
+            UserModel user = userService.getById(int.Parse(id));
+            ViewData["user"] = user;
+            return View();
+        }
 
-        return View();
+
     }
+
 
     public IActionResult Privacy()
     {

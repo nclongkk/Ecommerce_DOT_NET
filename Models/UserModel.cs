@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Ecommerce_DOT_NET.Models
+namespace daily_blog.Models
 {
     public class UserModel : BaseModel
     {
@@ -19,5 +19,12 @@ namespace Ecommerce_DOT_NET.Models
 
         [Required]
         public RoleEnum? Role { get; set; }
+
+        public virtual ICollection<PostModel>? Posts { get; set; }
+
+        public string toString()
+        {
+            return $"{Id} - {Username} - {Password} - {Email} - {Role} - {CreatedAt}";
+        }
     }
 }
