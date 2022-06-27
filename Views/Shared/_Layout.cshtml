@@ -57,7 +57,7 @@
     </div>
 
     <main role="main" class="pb-3" id="main-content">
-        @if (@AuthorId != null)
+        @if (@AuthorId != null && @Context.Request.Path!= "/create")
         {
             <form asp-action="Keyword" asp-controller="Post" method="get">
                 <div class="container">

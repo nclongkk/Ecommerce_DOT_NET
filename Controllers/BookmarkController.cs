@@ -22,7 +22,7 @@ public class BookmarkController : Controller
         string userId = HttpContext.Session.GetString("user_id");
         if (userId == null)
         {
-            return RedirectToAction("Login");
+            return RedirectToAction("Login", "Auth");
         }
         BookmarkModel[] bookmarks = bookmarkService.getAllBookmarkOfUser(int.Parse(userId));
         Console.WriteLine(bookmarks[0].Post.Title);
@@ -53,7 +53,7 @@ public class BookmarkController : Controller
         string userId = HttpContext.Session.GetString("user_id");
         if (userId == null)
         {
-            return RedirectToAction("Login");
+            return RedirectToAction("Login", "Auth");
         }
         bookmarkService.delete(int.Parse(id));
         return RedirectToAction("Index");
